@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_sales__customer
+    description: "Modelo de staging que limpa e padroniza os dados de clientes da tabela customer."
+    columns:
+      - name: customer_id
+        description: "Identificador único do cliente (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: person_id
+        description: "Identificador da pessoa física associada ao cliente."
+
+      - name: store_id
+        description: "Identificador da loja (PJ) associada ao cliente."
+
+      - name: territory_id
+        description: "Identificador do território de vendas do cliente."

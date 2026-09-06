@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_sales__orders
+    description: "Modelo de staging que limpa e padroniza o cabeçalho dos pedidos de venda extraídos da tabela salesorderheader."
+    columns:
+      - name: sales_order_id
+        description: "Identificador único do pedido de venda (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Identificador único do cliente associado ao pedido (Chave estrangeira para dim_customer)."
+        data_tests:
+          - not_null
+
+      - name: territory_id
+        description: "Identificador do território de vendas onde o pedido foi realizado."
+
+      - name: credit_card_id
+        description: "Identificador do cartão de crédito utilizado no pagamento."
+
+      - name: order_date
+        description: "Data em que o pedido foi realizado (essencial para a dim_date e análises temporais)."
+        data_tests:
+          - not_null
+
+      - name: order_status
+        description: "Status do pedido (ex: 5 para concluído/enviado, usado para filtrar as vendas efetivadas)."
+
+      - name: sub_total
+        description: "Valor parcial do pedido antes de impostos e frete."
+
+      - name: tax_amount
+        description: "Valor dos impostos aplicados ao pedido."
+
+      - name: freight
+        description: "Custo do frete do pedido."
+
+      - name: total_due
+        description: "Valor total devido do pedido (subtotal + impostos + frete)."

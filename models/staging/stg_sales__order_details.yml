@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_sales__order_details
+    description: "Modelo de staging que limpa e padroniza os itens detalhados dos pedidos de venda."
+    columns:
+      - name: sales_order_detail_id
+        description: "Identificador único do item do pedido (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: sales_order_id
+        description: "Identificador do pedido de venda."
+        data_tests:
+          - not_null
+
+      - name: product_id
+        description: "Identificador do produto."
+        data_tests:
+          - not_null
+
+      - name: order_qty
+        description: "Quantidade física do produto comprada."
+
+      - name: unit_price
+        description: "Preço unitário de venda."
+
+      - name: unit_price_discount
+        description: "Desconto unitário aplicado."

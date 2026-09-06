@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: sales
+    description: "Tabelas brutas do schema de Vendas da Adventure Works"
+    database: Adventureworks
+    schema: sales
+    tables:
+      - name: salesorderheader
+      - name: salesorderdetail
+      - name: customer
+      - name: store
+      - name: salesterritory
+      - name: creditcard
+      - name: salesreason
+      - name: salesorderheadersalesreason
+
+  - name: production
+    description: "Tabelas brutas do schema de Produção da Adventure Works"
+    database: Adventureworks
+    schema: production
+    tables:
+      - name: product
+
+  - name: person
+    description: "Tabelas brutas do schema de Pessoas e Endereços da Adventure Works"
+    database: Adventureworks
+    schema: person
+    tables:
+      - name: person
+      - name: address
+      - name: stateprovince

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_sales__store
+    description: "Modelo de staging para as lojas clientes (PJ)."
+    columns:
+      - name: store_id
+        description: "Identificador único da loja (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: store_name
+        description: "Nome da loja."
