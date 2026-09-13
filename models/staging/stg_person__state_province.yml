@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_person__state_province
+    description: "Modelo de staging para estados e províncias."
+    columns:
+      - name: state_province_id
+        description: "Identificador único do estado/província (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: state_name
+        description: "Nome do estado ou província."
+      - name: territory_id
+        description: "Identificador do território de vendas."

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: "Dimensão de produtos comercializados."
+    columns:
+      - name: product_id
+        description: "Chave primária do produto."
+        data_tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Nome do produto."

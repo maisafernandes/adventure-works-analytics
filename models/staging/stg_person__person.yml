@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_person__person
+    description: "Modelo de staging para dados cadastrais de pessoas físicas."
+    columns:
+      - name: person_id
+        description: "Identificador único da pessoa (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "Primeiro nome."
+      - name: last_name
+        description: "Sobrenome."

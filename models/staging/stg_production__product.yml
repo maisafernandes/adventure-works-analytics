@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_production__product
+    description: "Modelo de staging que limpa e padroniza os dados de produtos da tabela product."
+    columns:
+      - name: product_id
+        description: "Identificador único do produto (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: product_name
+        description: "Nome do produto."
+
+      - name: product_number
+        description: "Código ou número de referência do produto."
+
+      - name: color
+        description: "Cor do produto."
+
+      - name: standard_cost
+        description: "Custo padrão de produção do produto."
+
+      - name: list_price
+        description: "Preço de tabela / lista do produto."
+
+      - name: product_subcategory_id
+        description: "Identificador da subcategoria do produto."
+
+      - name: product_model_id
+        description: "Identificador do modelo do produto."

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: "Dimensão de calendário para análises temporais e séries históricas."
+    columns:
+      - name: date_day
+        description: "Data completa (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: year
+        description: "Ano da data."

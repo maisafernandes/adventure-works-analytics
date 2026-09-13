@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_location
+    description: "Modelo intermediário que une endereços e estados para formar a dimensão de localidades."
+    columns:
+      - name: address_id
+        description: "Chave primária da localidade."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: city
+        description: "Nome da cidade."
+
+      - name: state_province_name
+        description: "Nome do estado ou província."
+
+      - name: country_region_code
+        description: "Código do país ou região."
+
+      - name: territory_id
+        description: "Identificador do território de vendas associado à localidade."

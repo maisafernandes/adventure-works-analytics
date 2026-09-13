@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_territory
+    description: "Modelo de staging para os territórios geográficos de vendas."
+    columns:
+      - name: territory_id
+        description: "Identificador único do território (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: territory_name
+        description: "Nome do território de vendas."

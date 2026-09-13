@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: "Dimensão de localidades geográficas de vendas."
+    columns:
+      - name: address_id
+        description: "Chave primária da localidade."
+        data_tests:
+          - unique
+          - not_null
+      - name: city
+        description: "Cidade associada ao endereço."
+      - name: state_province_name
+        description: "Nome do estado ou província."
+      - name: country_region_code
+        description: "Código do país/região."
+      - name: territory_id
+        description: "Identificador do território de vendas."

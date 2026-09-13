@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_order_header_sales_reason
+    description: "Tabela associativa (bridge) entre pedidos e motivos de venda."
+    columns:
+      - name: sales_order_id
+        description: "Identificador do pedido."
+        data_tests:
+          - not_null
+      - name: sales_reason_id
+        description: "Identificador do motivo da venda."
+        data_tests:
+          - not_null

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Dimensão de clientes consolidados, combinando pessoas físicas e lojas (PJ)."
+    columns:
+      - name: customer_id
+        description: "Chave primária do cliente."
+        data_tests:
+          - unique
+          - not_null
+      - name: business_entity_id
+        description: "Identificador da entidade de negócio de origem."
+      - name: full_name
+        description: "Nome completo (Pessoa Física)."
+      - name: store_name
+        description: "Nome da loja (Cliente PJ)."

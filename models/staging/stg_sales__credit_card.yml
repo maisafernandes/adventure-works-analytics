@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_sales__credit_card
+    description: "Modelo de staging para informações de cartões de crédito."
+    columns:
+      - name: credit_card_id
+        description: "Identificador único do cartão (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: card_type
+        description: "Bandeira ou tipo do cartão de crédito."

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_sales__sales_reason
+    description: "Modelo de staging para os motivos associados às vendas (ex: Marketing, Promoção)."
+    columns:
+      - name: sales_reason_id
+        description: "Identificador único do motivo (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: sales_reason_name
+        description: "Descrição do motivo da venda."

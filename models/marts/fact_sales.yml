@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Tabela Fato de Vendas com granularidade no item do pedido. Nota: Ocorre fan-out estrutural devido a pedidos com múltiplos motivos de venda (sales_reason_id)."
+    columns:
+      - name: sales_order_id
+        description: "Chave estrangeira para o cabeçalho do pedido."
+        data_tests:
+          - not_null
+
+      - name: sales_order_detail_id
+        description: "Identificador base do item do pedido."
+        data_tests:
+          - not_null
+
+      - name: order_date
+        description: "Data em que o pedido foi realizado. Conecta com dim_date."
+        data_tests:
+          - not_null
+
+      - name: customer_id
+        description: "Chave estrangeira para dim_customer."
+
+      - name: product_id
+        description: "Chave estrangeira para dim_product."
+
+      - name: territory_id
+        description: "Chave estrangeira para dim_location."
+
+      - name: credit_card_id
+        description: "Chave estrangeira para dim_credit_card."
+
+      - name: sales_reason_id
+        description: "Chave estrangeira para dim_sales_reason."
+
+      - name: order_qty
+        description: "Quantidade física de produtos faturados."
+
+      - name: unit_price
+        description: "Preço unitário original do produto."
+
+      - name: unit_price_discount
+        description: "Desconto unitário aplicado."
+
+      - name: gross_revenue
+        description: "Receita bruta da linha, calculada pela fórmula: qty * unit_price * (1 - discount)."

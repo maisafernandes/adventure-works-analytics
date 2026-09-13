@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_sales_reason
+    description: "Dimensão dos motivos de venda, essencial para analisar a eficácia promocional."
+    columns:
+      - name: sales_reason_id
+        description: "Chave primária do motivo."
+        data_tests:
+          - unique
+          - not_null
+      - name: sales_reason_name
+        description: "Nome do motivo (ex: Price, On Promotion)."

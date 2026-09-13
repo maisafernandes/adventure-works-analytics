@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_credit_card
+    description: "Dimensão com os tipos e bandeiras de cartões de crédito."
+    columns:
+      - name: credit_card_id
+        description: "Chave primária do cartão."
+        data_tests:
+          - unique
+          - not_null
+      - name: card_type
+        description: "Bandeira do cartão (ex: Vista, SuperiorCard)."

@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_person__address
+    description: "Modelo de staging para endereços."
+    columns:
+      - name: address_id
+        description: "Identificador único do endereço (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: city
+        description: "Cidade."
+      - name: state_province_id
+        description: "Identificador do estado/província."
+        data_tests:
+          - not_null
