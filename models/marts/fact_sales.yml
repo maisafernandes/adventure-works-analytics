@@ -25,8 +25,13 @@ models:
       - name: product_id
         description: "Chave estrangeira para dim_product."
 
+      - name: address_id
+        description: "Chave estrangeira para dim_location. Define o local exato da entrega."
+        data_tests:
+          - not_null
+
       - name: territory_id
-        description: "Chave estrangeira para dim_location."
+        description: "Identificador do território de vendas (mantido na fato para análises diretas sem necessidade de join com dim_location)."
 
       - name: credit_card_id
         description: "Chave estrangeira para dim_credit_card."
