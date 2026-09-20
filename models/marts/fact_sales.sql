@@ -29,8 +29,8 @@ with orders as (
         , order_details.unit_price
         , order_details.unit_price_discount
         
-        -- Cálculo da Receita Bruta do Item já abatendo o desconto
-        , (order_details.order_qty * order_details.unit_price * (1 - order_details.unit_price_discount)) as gross_revenue
+        -- Cálculo da Receita Líquida do Item já abatendo o desconto
+        , (order_details.order_qty * order_details.unit_price * (1 - order_details.unit_price_discount)) as revenue
     
     from order_details
     inner join orders

@@ -48,5 +48,5 @@ models:
       - name: unit_price_discount
         description: "Desconto unitário aplicado."
 
-      - name: gross_revenue
-        description: "Receita bruta da linha, calculada pela fórmula: qty * unit_price * (1 - discount)."
+      - name: revenue
+        description: "Receita líquida da linha, calculada pela fórmula: qty * unit_price * (1 - discount)."
