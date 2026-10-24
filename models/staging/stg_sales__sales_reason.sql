@@ -7,9 +7,9 @@ with source as (
 , renamed as (
 
     select
-        salesreasonid as sales_reason_id
-        , name as sales_reason_name
-        , reasontype as reason_type
+        cast(salesreasonid as int) as sales_reason_id
+        , cast(name as varchar) as sales_reason_name
+        , cast(reasontype as varchar) as reason_type
     from source
 )
 

@@ -5,21 +5,21 @@ with source as (
 
 , renamed as (
     select
-        salesorderid as sales_order_id
-        , customerid as customer_id
-        , territoryid as territory_id
-        , creditcardid as credit_card_id
-        , shiptoaddressid as ship_to_address_id
+        cast(salesorderid as int) as sales_order_id
+        , cast(customerid as int) as customer_id
+        , cast(territoryid as int) as territory_id
+        , cast(creditcardid as int) as credit_card_id
+        , cast(shiptoaddressid as int) as ship_to_address_id
 
         -- Datas e Status
-        , orderdate as order_date
-        , status as order_status
+        , cast(orderdate as date) as order_date
+        , cast(status as int) as order_status
 
         -- Métricas / Valores financeiros brutos
-        , subtotal as sub_total
-        , taxamt as tax_amount
-        , freight as freight
-        , totaldue as total_due
+        , cast(subtotal as numeric(18, 4)) as sub_total
+        , cast(taxamt as numeric(18, 4)) as tax_amount
+        , cast(freight as numeric(18, 4)) as freight
+        , cast(totaldue as numeric(18, 4)) as total_due
     from source
 )
 

@@ -7,10 +7,10 @@ with source as (
 , renamed as (
 
     select
-        businessentityid as person_id
-        , persontype as person_type
-        , firstname as first_name
-        , lastname as last_name
+        cast(businessentityid as int) as person_id
+        , cast(persontype as varchar) as person_type
+        , cast(firstname as varchar) as first_name
+        , cast(lastname as varchar) as last_name
     from source
 )
 

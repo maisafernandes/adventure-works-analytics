@@ -7,11 +7,11 @@ with source as (
 , renamed as (
 
     select
-        addressid as address_id
-        , addressline1 as address_line_1
-        , city as city
-        , stateprovinceid as state_province_id
-        , postalcode as postal_code
+        cast(addressid as int) as address_id
+        , cast(addressline1 as varchar) as address_line_1
+        , cast(city as varchar) as city
+        , cast(stateprovinceid as int) as state_province_id
+        , cast(postalcode as varchar) as postal_code
     from source
 )
 

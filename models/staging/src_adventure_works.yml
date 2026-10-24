@@ -7,12 +7,51 @@ sources:
     schema: sales
     tables:
       - name: salesorderheader
+        columns:
+          - name: salesorderid
+            data_tests:
+              - unique
+              - not_null
+          - name: orderdate
+            data_tests:
+              - not_null
       - name: salesorderdetail
+        columns:
+          - name: salesorderdetailid
+            data_tests:
+              - unique
+              - not_null
+          - name: salesorderid
+            data_tests:
+              - not_null
+          - name: productid
+            data_tests:
+              - not_null
       - name: customer
+        columns:
+          - name: customerid
+            data_tests:
+              - unique
+              - not_null
       - name: store
       - name: salesterritory
+        columns:
+          - name: territoryid
+            data_tests:
+              - unique
+              - not_null
       - name: creditcard
+        columns:
+          - name: creditcardid
+            data_tests:
+              - unique
+              - not_null
       - name: salesreason
+        columns:
+          - name: salesreasonid
+            data_tests:
+              - unique
+              - not_null
       - name: salesorderheadersalesreason
 
   - name: production
@@ -21,6 +60,11 @@ sources:
     schema: production
     tables:
       - name: product
+        columns:
+          - name: productid
+            data_tests:
+              - unique
+              - not_null
 
   - name: person
     description: "Tabelas brutas do schema de Pessoas e Endereços da Adventure Works"
@@ -29,4 +73,9 @@ sources:
     tables:
       - name: person
       - name: address
+        columns:
+          - name: addressid
+            data_tests:
+              - unique
+              - not_null
       - name: stateprovince
