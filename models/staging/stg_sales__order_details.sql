@@ -7,14 +7,14 @@ with source as (
 , renamed as (
 
     select
-        salesorderdetailid as sales_order_detail_id
-        , salesorderid as sales_order_id
-        , productid as product_id
+        cast(salesorderdetailid as int) as sales_order_detail_id
+        , cast(salesorderid as int) as sales_order_id
+        , cast(productid as int) as product_id
         
         -- Métricas Quantitativas e Financeiras
-        , orderqty as order_qty
-        , unitprice as unit_price
-        , unitpricediscount as unit_price_discount
+        , cast(orderqty as int) as order_qty
+        , cast(unitprice as numeric(18, 4)) as unit_price
+        , cast(unitpricediscount as numeric(18, 4)) as unit_price_discount
     from source
 )
 

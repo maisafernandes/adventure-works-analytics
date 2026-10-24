@@ -7,8 +7,8 @@ with source as (
 , renamed as (
 
     select
-        creditcardid as credit_card_id
-        , cardtype as card_type
+        cast(creditcardid as int) as credit_card_id
+        , cast(cardtype as varchar) as card_type
     from source
 )
 

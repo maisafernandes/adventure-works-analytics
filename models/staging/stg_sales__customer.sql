@@ -7,10 +7,10 @@ with source as (
 ,renamed as (
 
     select
-        customerid as customer_id
-        , personid as person_id
-        , storeid as store_id
-        , territoryid as territory_id
+        cast(customerid as int) as customer_id
+        , cast(personid as int) as person_id
+        , cast(storeid as int) as store_id
+        , cast(territoryid as int) as territory_id
     from source
 )
 

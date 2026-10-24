@@ -7,11 +7,11 @@ with source as (
 , renamed as (
 
     select
-        stateprovinceid as state_province_id
-        , stateprovincecode as state_province_code
-        , countryregioncode as country_region_code
-        , name as state_name
-        , territoryid as territory_id
+        cast(stateprovinceid as int) as state_province_id
+        , cast(stateprovincecode as varchar) as state_province_code
+        , cast(countryregioncode as varchar) as country_region_code
+        , cast(name as varchar) as state_name
+        , cast(territoryid as int) as territory_id
     from source
 )
 

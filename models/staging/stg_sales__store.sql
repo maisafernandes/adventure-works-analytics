@@ -7,9 +7,9 @@ with source as (
 renamed as (
 
     select
-        businessentityid as store_id
-        , name as store_name
-        , salespersonid as salesperson_id
+        cast(businessentityid as int) as store_id
+        , cast(name as varchar) as store_name
+        , cast(salespersonid as int) as salesperson_id
     from source
 )
 
