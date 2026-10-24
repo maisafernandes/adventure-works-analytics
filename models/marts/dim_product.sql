@@ -1,6 +1,6 @@
 with product as (
     select * 
-    from {{ ref('stg_production__product') }}
+    from {{ ref('int_product') }}
 )
 
 , dim_product as (
@@ -10,6 +10,8 @@ with product as (
         , product_number
         , color
         , list_price
+        , product_subcategory_name
+        , product_category_name
     from product
 )
 

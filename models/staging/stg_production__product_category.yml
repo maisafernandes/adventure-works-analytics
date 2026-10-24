@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_production__product_category
+    description: "Modelo de staging das categorias de produto, extraídas da tabela productcategory."
+    columns:
+      - name: product_category_id
+        description: "Identificador único da categoria (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: product_category_name
+        description: "Nome da categoria (ex: Bikes, Components, Clothing, Accessories)."
