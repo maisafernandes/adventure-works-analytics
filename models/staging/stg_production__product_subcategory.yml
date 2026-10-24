@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_production__product_subcategory
+    description: "Modelo de staging das subcategorias de produto, extraídas da tabela productsubcategory."
+    columns:
+      - name: product_subcategory_id
+        description: "Identificador único da subcategoria (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
+      - name: product_category_id
+        description: "Identificador da categoria à qual a subcategoria pertence."
+        data_tests:
+          - not_null
+      - name: product_subcategory_name
+        description: "Nome da subcategoria (ex: Mountain Bikes)."

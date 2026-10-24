@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_product
+    description: "Produtos enriquecidos com subcategoria e categoria. Produtos sem subcategoria (componentes e peças internas) ficam com categoria nula."
+    columns:
+      - name: product_id
+        description: "Identificador único do produto (Chave primária)."
+        data_tests:
+          - unique
+          - not_null
