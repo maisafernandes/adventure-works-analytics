@@ -21,3 +21,6 @@ models:
 
       - name: territory_id
         description: "Identificador do território de vendas associado à localidade."
+
+      - name: territory_name
+        description: "Nome do território de vendas."

@@ -2,26 +2,26 @@ version: 2
 
 models:
   - name: bridge_sales_order_reason
-    description: "Tabela ponte entre pedidos e motivos de venda (relação muitos-para-muitos). Mantém a fato no grão do item, sem duplicar receita. Um pedido pode ter mais de um motivo, e pedidos sem motivo informado não aparecem na ponte."
+    description: "Tabela ponte entre pedidos e motivos de venda (relação muitos-para-muitos). Mantém a fato no grão do item, sem duplicar receita. Um pedido pode ter mais de um motivo."
     columns:
-      - name: sales_order_reason_key
-        description: "Chave da combinação pedido e motivo. Chave primária da ponte."
+      - name: sales_order_reason_sk
+        description: "Chave substituta da combinação pedido e motivo. Chave primária da ponte."
         data_tests:
           - unique
           - not_null
-      - name: sales_order_id
+      - name: sales_order_sk
         description: "Chave estrangeira para dim_sales_order."
         data_tests:
           - not_null
           - relationships:
               arguments:
                 to: ref('dim_sales_order')
-                field: sales_order_id
-      - name: sales_reason_id
+                field: sales_order_sk
+      - name: sales_reason_sk
         description: "Chave estrangeira para dim_sales_reason."
         data_tests:
           - not_null
           - relationships:
               arguments:
                 to: ref('dim_sales_reason')
-                field: sales_reason_id
+                field: sales_reason_sk

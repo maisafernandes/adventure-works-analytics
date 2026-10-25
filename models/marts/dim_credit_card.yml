@@ -2,10 +2,15 @@ version: 2
 
 models:
   - name: dim_credit_card
-    description: "Dimensão com os tipos e bandeiras de cartões de crédito."
+    description: "Dimensão com os cartões de crédito e suas bandeiras. Contém o membro 'Not informed' (credit_card_id = -1) para pedidos sem cartão."
     columns:
+      - name: credit_card_sk
+        description: "Chave substituta (surrogate key) do cartão. Chave primária da dimensão."
+        data_tests:
+          - unique
+          - not_null
       - name: credit_card_id
-        description: "Chave primária do cartão."
+        description: "Identificador natural do cartão na origem (-1 para pedidos sem cartão)."
         data_tests:
           - unique
           - not_null

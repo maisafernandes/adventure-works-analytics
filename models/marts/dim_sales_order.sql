@@ -5,7 +5,8 @@ with orders as (
 
 , dim_sales_order as (
     select
-        sales_order_id
+        {{ dbt_utils.generate_surrogate_key(['sales_order_id']) }} as sales_order_sk
+        , sales_order_id
         , order_status
         , case order_status
             when 1 then 'In process'

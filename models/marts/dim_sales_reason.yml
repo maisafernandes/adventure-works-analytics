@@ -2,12 +2,19 @@ version: 2
 
 models:
   - name: dim_sales_reason
-    description: "Dimensão dos motivos de venda, essencial para analisar a eficácia promocional."
+    description: "Dimensão de motivos de venda. Contém o membro 'Not informed' (sales_reason_id = -1) para pedidos sem motivo."
     columns:
+      - name: sales_reason_sk
+        description: "Chave substituta (surrogate key) do motivo de venda. Chave primária da dimensão."
+        data_tests:
+          - unique
+          - not_null
       - name: sales_reason_id
-        description: "Chave primária do motivo."
+        description: "Identificador natural do motivo na origem (-1 para pedidos sem motivo)."
         data_tests:
           - unique
           - not_null
       - name: sales_reason_name
-        description: "Nome do motivo (ex: Price, On Promotion)."
+        description: "Nome do motivo de venda (ex: Price, On Promotion)."
+      - name: reason_type
+        description: "Tipo do motivo (Marketing, Promotion ou Other)."

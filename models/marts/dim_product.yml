@@ -2,10 +2,15 @@ version: 2
 
 models:
   - name: dim_product
-    description: "Dimensão de produtos comercializados, com categoria e subcategoria. Produtos sem subcategoria (componentes internos) têm categoria e subcategoria nulas."
+    description: "Dimensão de produtos comercializados, com categoria e subcategoria. Produtos sem subcategoria na origem (peças e subconjuntos) aparecem como 'Sem categoria' e 'Sem subcategoria'."
     columns:
+      - name: product_sk
+        description: "Chave substituta (surrogate key) do produto. Chave primária da dimensão."
+        data_tests:
+          - unique
+          - not_null
       - name: product_id
-        description: "Chave primária do produto."
+        description: "Identificador natural do produto na origem."
         data_tests:
           - unique
           - not_null
@@ -18,6 +23,6 @@ models:
       - name: list_price
         description: "Preço de tabela do produto."
       - name: product_subcategory_name
-        description: "Nome da subcategoria do produto."
+        description: "Nome da subcategoria do produto ('Sem subcategoria' quando não informada)."
       - name: product_category_name
-        description: "Nome da categoria do produto."
+        description: "Nome da categoria do produto ('Sem categoria' quando não informada)."
