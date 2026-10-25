@@ -4,8 +4,13 @@ models:
   - name: dim_customer
     description: "Dimensão de clientes consolidados, combinando pessoas físicas e lojas (PJ)."
     columns:
+      - name: customer_sk
+        description: "Chave substituta (surrogate key) do cliente. Chave primária da dimensão."
+        data_tests:
+          - unique
+          - not_null
       - name: customer_id
-        description: "Chave primária do cliente."
+        description: "Identificador natural do cliente na origem."
         data_tests:
           - unique
           - not_null

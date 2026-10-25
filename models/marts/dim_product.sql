@@ -5,13 +5,14 @@ with product as (
 
 , dim_product as (
     select
-        product_id
+        {{ dbt_utils.generate_surrogate_key(['product_id']) }} as product_sk
+        , product_id
         , product_name
         , product_number
         , color
         , list_price
-        , product_subcategory_name
-        , product_category_name
+        , coalesce(product_subcategory_name, 'Sem subcategoria') as product_subcategory_name
+        , coalesce(product_category_name, 'Sem categoria') as product_category_name
     from product
 )
 

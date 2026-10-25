@@ -2,9 +2,11 @@
 -- Retorna linha (e falha) apenas quando o valor calculado na fato difere do auditado.
 with gross_sales_2011 as (
     select
-        round(sum(gross_revenue), 2) as gross_sales
-    from {{ ref('fact_sales') }}
-    where extract(year from order_date) = 2011
+        round(sum(fact_sales.gross_revenue), 2) as gross_sales
+    from {{ ref('fact_sales') }} as fact_sales
+    inner join {{ ref('dim_date') }} as dim_date
+        on fact_sales.date_sk = dim_date.date_sk
+    where dim_date.year = 2011
 )
 
 select

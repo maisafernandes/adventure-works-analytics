@@ -4,45 +4,80 @@ models:
   - name: fact_sales
     description: "Tabela fato de vendas no grão do item do pedido (uma linha por sales_order_detail_id). Os motivos de venda ficam na tabela ponte bridge_sales_order_reason, ligada por dim_sales_order, para não duplicar receita."
     columns:
-      - name: sales_order_id
+      - name: sales_order_detail_sk
+        description: "Chave única da fato (substituta, gerada a partir de sales_order_id e sales_order_detail_id)."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: sales_order_sk
         description: "Chave estrangeira para dim_sales_order."
         data_tests:
           - not_null
           - relationships:
               arguments:
                 to: ref('dim_sales_order')
-                field: sales_order_id
+                field: sales_order_sk
+
+      - name: date_sk
+        description: "Chave estrangeira para dim_date (data do pedido)."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_sk
+
+      - name: customer_sk
+        description: "Chave estrangeira para dim_customer."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_sk
+
+      - name: product_sk
+        description: "Chave estrangeira para dim_product."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_product')
+                field: product_sk
+
+      - name: location_sk
+        description: "Chave estrangeira para dim_location (endereço de entrega)."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_sk
+
+      - name: credit_card_sk
+        description: "Chave estrangeira para dim_credit_card. Pedidos sem cartão apontam para o membro 'Not informed'."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_credit_card')
+                field: credit_card_sk
+
+      - name: sales_order_id
+        description: "Identificador natural do pedido (dimensão degenerada)."
+        data_tests:
+          - not_null
 
       - name: sales_order_detail_id
-        description: "Identificador do item do pedido. Chave única da fato."
-        data_tests:
-          - unique
-          - not_null
-
-      - name: order_date
-        description: "Data em que o pedido foi realizado. Conecta com dim_date."
+        description: "Identificador natural do item do pedido (dimensão degenerada)."
         data_tests:
           - not_null
-
-      - name: customer_id
-        description: "Chave estrangeira para dim_customer."
-
-      - name: product_id
-        description: "Chave estrangeira para dim_product."
-
-      - name: address_id
-        description: "Chave estrangeira para dim_location. Define o local exato da entrega."
-        data_tests:
-          - not_null
-
-      - name: territory_id
-        description: "Identificador do território de vendas (mantido na fato para análises diretas sem necessidade de join com dim_location)."
-
-      - name: credit_card_id
-        description: "Chave estrangeira para dim_credit_card."
 
       - name: order_qty
-        description: "Quantidade física de produtos faturados."
+        description: "Quantidade de produtos vendidos no item."
+        data_tests:
+          - not_null
 
       - name: unit_price
         description: "Preço unitário original do produto."

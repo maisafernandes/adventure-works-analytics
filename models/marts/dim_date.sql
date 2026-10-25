@@ -6,11 +6,13 @@ with date_spine as (
 
 , dim_date as (
     select
-        date_day
-        , extract(year from date_day) as year
-        , extract(month from date_day) as month
-        , extract(day from date_day) as day
-        , extract(quarter from date_day) as quarter
+        cast(to_char(date_day, 'YYYYMMDD') as int) as date_sk
+        , date_day
+        , cast(extract(year from date_day) as int) as year
+        , cast(extract(month from date_day) as int) as month
+        , trim(to_char(date_day, 'Month')) as month_name
+        , cast(extract(day from date_day) as int) as day
+        , cast(extract(quarter from date_day) as int) as quarter
     from date_spine
 )
 
