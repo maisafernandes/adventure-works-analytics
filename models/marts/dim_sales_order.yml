@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_sales_order
+    description: "Dimensão de pedidos no grão do cabeçalho. Carrega o status do pedido e liga a fato à tabela ponte de motivos de venda."
+    columns:
+      - name: sales_order_id
+        description: "Identificador do pedido. Chave primária da dimensão."
+        data_tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: "Código do status do pedido."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5, 6]
+      - name: order_status_name
+        description: "Descrição do status do pedido (5 = Shipped)."
