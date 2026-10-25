@@ -2,16 +2,21 @@ version: 2
 
 models:
   - name: fact_sales
-    description: "Tabela Fato de Vendas com granularidade no item do pedido. Nota: Ocorre fan-out estrutural devido a pedidos com múltiplos motivos de venda (sales_reason_id)."
+    description: "Tabela fato de vendas no grão do item do pedido (uma linha por sales_order_detail_id). Os motivos de venda ficam na tabela ponte bridge_sales_order_reason, ligada por dim_sales_order, para não duplicar receita."
     columns:
       - name: sales_order_id
-        description: "Chave estrangeira para o cabeçalho do pedido."
+        description: "Chave estrangeira para dim_sales_order."
         data_tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_sales_order')
+                field: sales_order_id
 
       - name: sales_order_detail_id
-        description: "Identificador base do item do pedido."
+        description: "Identificador do item do pedido. Chave única da fato."
         data_tests:
+          - unique
           - not_null
 
       - name: order_date
@@ -36,9 +41,6 @@ models:
       - name: credit_card_id
         description: "Chave estrangeira para dim_credit_card."
 
-      - name: sales_reason_id
-        description: "Chave estrangeira para dim_sales_reason."
-
       - name: order_qty
         description: "Quantidade física de produtos faturados."
 
@@ -46,7 +48,17 @@ models:
         description: "Preço unitário original do produto."
 
       - name: unit_price_discount
-        description: "Desconto unitário aplicado."
+        description: "Percentual de desconto unitário aplicado (0 a 1)."
+
+      - name: gross_revenue
+        description: "Receita bruta do item, sem desconto: qty * unit_price."
+        data_tests:
+          - not_null
+
+      - name: discount_amount
+        description: "Valor do desconto do item: qty * unit_price * discount."
 
       - name: revenue
-        description: "Receita líquida da linha, calculada pela fórmula: qty * unit_price * (1 - discount)."
+        description: "Receita líquida do item, calculada como qty * unit_price * (1 - discount)."
+        data_tests:
+          - not_null
